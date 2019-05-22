@@ -68,20 +68,15 @@ app.use(passport.session());
 
 
 // Define routes.
-app.get('/',
+app.get('/api/login',
   function(req, res) {
-    res.render('home', { user: req.user });
-  });
-
-app.get('/login',
-  function(req, res){
-    res.render('login');
+    res.json({ user: req.user });
   });
 
 app.get('/login/facebook',
   passport.authenticate('facebook'));
 
-app.get('/return', 
+app.get('/api/login', 
   passport.authenticate('facebook', { failureRedirect: '/login' }),
   function(req, res) {
     res.redirect('/');

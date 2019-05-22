@@ -1,10 +1,11 @@
 import { RouterModule, Routes } from "@angular/router"
-import { NgModule } from "@angular/core";
+import { NgModule, Component } from "@angular/core";
 
-import { AuthGuard } from "./auth/auth.guard";
+import { AuthGuard } from "./auth.guard";
+import { LoginComponent } from "./login/login.component";
 
 const routes: Routes = [
-    
+   path: '', Component: LoginComponent 
 ]
 
 @NgModule({
