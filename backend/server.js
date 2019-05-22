@@ -3,13 +3,6 @@ var passport = require('passport');
 var config = require('./config');
 var Strategy = require('passport-facebook').Strategy;
 
-require('dotenv').config();
-
-var express = require('express');
-var passport = require('passport');
-var Strategy = require('passport-facebook').Strategy;
-
-
 // Configure the Facebook strategy for use by Passport.
 //
 // OAuth 2.0-based strategies require a `verify` function which receives the
