@@ -7,35 +7,17 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 
-import {
-  SocialLoginModule,
-  AuthServiceConfig,
-  GoogleLoginProvider,
-  FacebookLoginProvider,
-} from "angular-6-social-login";
-
 import { LoginComponent } from './login/login.component';
 
 import {MatCardModule} from '@angular/material/card';
 
+import {
+  SocialLoginModule,
+  AuthServiceConfig,
+  GoogleLoginProvider
+} from 'angular5-social-login';
 
-// Configs 
-export function getAuthServiceConfigs() {
-  let config = new AuthServiceConfig(
-      [
-        {
-          id: FacebookLoginProvider.PROVIDER_ID,
-          provider: new FacebookLoginProvider("Your-Facebook-app-id")
-        },
-        {
-          id: GoogleLoginProvider.PROVIDER_ID,
-          provider: new GoogleLoginProvider("Your-Google-Client-Id")
-        }
-      ]
-  );
-  return config;
-}
-
+import { getAuthServiceConfigs } from './socialloginConfig';
 
 @NgModule({
   declarations: [
@@ -49,10 +31,13 @@ export function getAuthServiceConfigs() {
     AppRoutingModule,
     MatCardModule
   ],
-  providers: [{
+  providers: [
+    // SocialLoginModule.initialize(getAuthServiceConfigs),
+    {
     provide: AuthServiceConfig,
     useFactory: getAuthServiceConfigs
-  }],
+  }
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
